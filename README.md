@@ -1,16 +1,62 @@
-# triply
+# Triply ✈️
 
-A new Flutter project.
+> Organize suas viagens de forma inteligente.
 
-## Getting Started
+O **Triply** é um aplicativo criado para centralizar todo o planejamento de uma viagem em um único lugar.
 
-This project is a starting point for a Flutter application.
+Mais do que um organizador de roteiros, o Triply foi concebido para acompanhar o viajante em todas as etapas da jornada: desde a inspiração inicial, passando pelo planejamento e organização, até o retorno para casa.
 
-A few resources to get you started if this is your first Flutter project:
+Nosso objetivo é eliminar planilhas, anotações dispersas, conversas perdidas e aplicativos separados, oferecendo uma experiência simples, elegante e eficiente.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Visão
+
+Construir o melhor aplicativo para organização de viagens, oferecendo uma experiência premium, intuitiva e cuidadosamente pensada em cada detalhe.
+
+---
+
+## Princípios
+
+* Simplicidade acima de tudo.
+* Design limpo e moderno.
+* Experiência rápida e fluida.
+* Funcionalidades que resolvem problemas reais.
+* Evolução contínua baseada na experiência do usuário.
+
+---
+
+## Status do Projeto
+
+🚧 Em desenvolvimento.
+
+O Triply está sendo desenvolvido de forma incremental. Cada funcionalidade é planejada, validada e implementada individualmente, garantindo qualidade e consistência durante toda a evolução do produto.
+
+---
+
+## Roadmap Inicial
+
+* Identidade visual
+* Design System
+* Splash Screen
+* Onboarding
+* Autenticação
+* Dashboard
+* Gestão de viagens
+* Cronograma da viagem
+* Documentos
+* Controle de despesas
+* Checklist de bagagem
+* Assistente inteligente
+
+---
+
+## Estrutura do Projeto
+
+A arquitetura do projeto evolui conforme novas funcionalidades são implementadas, sempre priorizando organização, escalabilidade, qualidade de código e facilidade de manutenção.
+
+---
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT.
