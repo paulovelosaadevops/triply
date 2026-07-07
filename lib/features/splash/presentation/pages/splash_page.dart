@@ -65,7 +65,7 @@ class _SplashPageState extends State<SplashPage>
       return;
     }
 
-    Navigator.of(context).pushReplacementNamed(AppRoutes.splashPlaceholder);
+    Navigator.of(context).pushReplacementNamed(AppRoutes.onboarding);
   }
 
   @override

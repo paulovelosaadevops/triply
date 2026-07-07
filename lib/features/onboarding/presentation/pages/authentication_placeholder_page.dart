@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SplashPlaceholderPage extends StatelessWidget {
-  const SplashPlaceholderPage({super.key});
+class AuthenticationPlaceholderPage extends StatelessWidget {
+  const AuthenticationPlaceholderPage({super.key});
 
   @override
   Widget build(BuildContext context) {
