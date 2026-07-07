@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:triply/app/router/app_router.dart';
 import 'package:triply/app/theme/design_tokens.dart';
 import 'package:triply/core/components/app_card.dart';
 import 'package:triply/core/components/section_title.dart';
@@ -24,6 +25,11 @@ class HomeTripsList extends StatelessWidget {
           (trip) => Padding(
             padding: EdgeInsets.only(bottom: tokens.spacing.md),
             child: AppCard(
+              onTap: () {
+                Navigator.of(
+                  context,
+                ).pushNamed(AppRoutes.tripDetails, arguments: trip);
+              },
               padding: EdgeInsets.all(tokens.spacing.lg),
               child: TripSummaryTile(trip: trip),
             ),

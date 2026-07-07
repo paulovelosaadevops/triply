@@ -17,6 +17,13 @@ class HomeNextTripCard extends StatelessWidget {
     final tokens = theme.extension<DesignTokens>() ?? DesignTokens.base;
 
     return AppCard(
+      onTap: trip == null
+          ? null
+          : () {
+              Navigator.of(
+                context,
+              ).pushNamed(AppRoutes.tripDetails, arguments: trip);
+            },
       padding: EdgeInsets.all(tokens.spacing.xl),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
