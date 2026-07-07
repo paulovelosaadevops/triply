@@ -46,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
 
-    Navigator.of(context).pushReplacementNamed(AppRoutes.homePlaceholder);
+    Navigator.of(context).pushReplacementNamed(AppRoutes.homeDashboard);
   }
 
   @override

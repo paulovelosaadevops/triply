@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    Navigator.of(context).pushReplacementNamed(AppRoutes.homePlaceholder);
+    Navigator.of(context).pushReplacementNamed(AppRoutes.homeDashboard);
   }
 
   @override

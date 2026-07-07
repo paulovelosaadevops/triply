@@ -1,0 +1,42 @@
+import 'package:flutter/material.dart';
+import 'package:triply/app/theme/design_tokens.dart';
+import 'package:triply/core/components/app_card.dart';
+import 'package:triply/core/components/primary_button.dart';
+
+class HomeNextTripCard extends StatelessWidget {
+  const HomeNextTripCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final tokens = theme.extension<DesignTokens>() ?? DesignTokens.base;
+
+    return AppCard(
+      padding: EdgeInsets.all(tokens.spacing.xl),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text('Sua próxima viagem', style: theme.textTheme.titleLarge),
+          SizedBox(height: tokens.spacing.sm),
+          Text(
+            'Nenhuma viagem cadastrada',
+            style: theme.textTheme.bodyLarge?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+          SizedBox(height: tokens.spacing.xl),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minWidth: 180),
+              child: const PrimaryButton(
+                label: 'Criar viagem',
+                onPressed: null,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

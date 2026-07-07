@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:triply/features/authentication/presentation/pages/forgot_password_page.dart';
-import 'package:triply/features/authentication/presentation/pages/home_placeholder_page.dart';
 import 'package:triply/features/authentication/presentation/pages/login_page.dart';
 import 'package:triply/features/authentication/presentation/pages/sign_up_page.dart';
+import 'package:triply/features/home/presentation/pages/home_dashboard_page.dart';
 import 'package:triply/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:triply/features/splash/presentation/pages/splash_page.dart';
 
@@ -14,7 +14,7 @@ class AppRoutes {
   static const String login = '/login';
   static const String signUp = '/sign-up';
   static const String forgotPassword = '/forgot-password';
-  static const String homePlaceholder = '/home-placeholder';
+  static const String homeDashboard = '/home';
 }
 
 class AppRouter {
@@ -30,9 +30,9 @@ class AppRouter {
         settings,
         const ForgotPasswordPage(),
       ),
-      AppRoutes.homePlaceholder => _pageRoute(
+      AppRoutes.homeDashboard => _pageRoute(
         settings,
-        const HomePlaceholderPage(),
+        const HomeDashboardPage(),
       ),
       _ => null,
     };
