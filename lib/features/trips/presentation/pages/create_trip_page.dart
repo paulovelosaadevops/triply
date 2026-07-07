@@ -3,7 +3,7 @@ import 'package:triply/app/theme/design_tokens.dart';
 import 'package:triply/core/components/app_text_field.dart';
 import 'package:triply/core/components/primary_button.dart';
 import 'package:triply/core/components/secondary_button.dart';
-import 'package:triply/features/trips/data/in_memory_trip_store.dart';
+import 'package:triply/features/trips/data/trip_local_repository.dart';
 import 'package:triply/features/trips/presentation/controllers/create_trip_controller.dart';
 import 'package:triply/features/trips/presentation/models/trip_currency.dart';
 import 'package:triply/features/trips/presentation/widgets/travelers_stepper.dart';
@@ -71,12 +71,15 @@ class _CreateTripPageState extends State<CreateTripPage> {
     );
   }
 
-  void _saveTrip() {
+  Future<void> _saveTrip() async {
     if (!_controller.validate()) {
       return;
     }
 
-    InMemoryTripStore.instance.addTrip(_controller.createTrip());
+    await TripLocalRepository.instance.addTrip(_controller.createTrip());
+    if (!mounted) {
+      return;
+    }
     Navigator.of(context).pop();
   }
 

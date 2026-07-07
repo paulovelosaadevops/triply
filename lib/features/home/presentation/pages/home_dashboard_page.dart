@@ -7,7 +7,7 @@ import 'package:triply/features/home/presentation/widgets/home_header.dart';
 import 'package:triply/features/home/presentation/widgets/home_next_trip_card.dart';
 import 'package:triply/features/home/presentation/widgets/home_quick_actions.dart';
 import 'package:triply/features/home/presentation/widgets/home_trips_list.dart';
-import 'package:triply/features/trips/data/in_memory_trip_store.dart';
+import 'package:triply/features/trips/data/trip_local_repository.dart';
 
 class HomeDashboardPage extends StatefulWidget {
   const HomeDashboardPage({super.key});
@@ -24,17 +24,17 @@ class _HomeDashboardPageState extends State<HomeDashboardPage> {
     HomeQuickAction(icon: Icons.payments_rounded, label: 'Gastos'),
   ];
 
-  final InMemoryTripStore _tripStore = InMemoryTripStore.instance;
+  final TripLocalRepository _tripRepository = TripLocalRepository.instance;
 
   @override
   void initState() {
     super.initState();
-    _tripStore.addListener(_handleTripsChanged);
+    _tripRepository.addListener(_handleTripsChanged);
   }
 
   @override
   void dispose() {
-    _tripStore.removeListener(_handleTripsChanged);
+    _tripRepository.removeListener(_handleTripsChanged);
     super.dispose();
   }
 
@@ -46,7 +46,7 @@ class _HomeDashboardPageState extends State<HomeDashboardPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final tokens = theme.extension<DesignTokens>() ?? DesignTokens.base;
-    final trips = _tripStore.trips;
+    final trips = _tripRepository.trips;
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -67,7 +67,7 @@ class _HomeDashboardPageState extends State<HomeDashboardPage> {
                   children: <Widget>[
                     const HomeHeader(),
                     SizedBox(height: tokens.spacing.xxl),
-                    HomeNextTripCard(trip: _tripStore.nextTrip),
+                    HomeNextTripCard(trip: _tripRepository.nextTrip),
                     SizedBox(height: tokens.spacing.xxl),
                     HomeQuickActions(actions: _quickActions),
                     SizedBox(height: tokens.spacing.xxl),
