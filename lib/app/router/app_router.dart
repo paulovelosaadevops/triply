@@ -5,6 +5,7 @@ import 'package:triply/features/authentication/presentation/pages/sign_up_page.d
 import 'package:triply/features/home/presentation/pages/home_dashboard_page.dart';
 import 'package:triply/features/onboarding/presentation/pages/onboarding_page.dart';
 import 'package:triply/features/splash/presentation/pages/splash_page.dart';
+import 'package:triply/features/trips/presentation/pages/create_trip_page.dart';
 
 class AppRoutes {
   const AppRoutes._();
@@ -15,6 +16,7 @@ class AppRoutes {
   static const String signUp = '/sign-up';
   static const String forgotPassword = '/forgot-password';
   static const String homeDashboard = '/home';
+  static const String createTrip = '/trips/create';
 }
 
 class AppRouter {
@@ -34,6 +36,7 @@ class AppRouter {
         settings,
         const HomeDashboardPage(),
       ),
+      AppRoutes.createTrip => _pageRoute(settings, const CreateTripPage()),
       _ => null,
     };
   }

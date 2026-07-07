@@ -6,10 +6,17 @@ import 'package:triply/features/home/presentation/widgets/home_empty_trips.dart'
 import 'package:triply/features/home/presentation/widgets/home_header.dart';
 import 'package:triply/features/home/presentation/widgets/home_next_trip_card.dart';
 import 'package:triply/features/home/presentation/widgets/home_quick_actions.dart';
+import 'package:triply/features/home/presentation/widgets/home_trips_list.dart';
+import 'package:triply/features/trips/data/in_memory_trip_store.dart';
 
-class HomeDashboardPage extends StatelessWidget {
+class HomeDashboardPage extends StatefulWidget {
   const HomeDashboardPage({super.key});
 
+  @override
+  State<HomeDashboardPage> createState() => _HomeDashboardPageState();
+}
+
+class _HomeDashboardPageState extends State<HomeDashboardPage> {
   static const List<HomeQuickAction> _quickActions = <HomeQuickAction>[
     HomeQuickAction(icon: Icons.flight_rounded, label: 'Voos'),
     HomeQuickAction(icon: Icons.hotel_rounded, label: 'Hospedagem'),
@@ -17,10 +24,29 @@ class HomeDashboardPage extends StatelessWidget {
     HomeQuickAction(icon: Icons.payments_rounded, label: 'Gastos'),
   ];
 
+  final InMemoryTripStore _tripStore = InMemoryTripStore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    _tripStore.addListener(_handleTripsChanged);
+  }
+
+  @override
+  void dispose() {
+    _tripStore.removeListener(_handleTripsChanged);
+    super.dispose();
+  }
+
+  void _handleTripsChanged() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final tokens = theme.extension<DesignTokens>() ?? DesignTokens.base;
+    final trips = _tripStore.trips;
 
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
@@ -41,11 +67,13 @@ class HomeDashboardPage extends StatelessWidget {
                   children: <Widget>[
                     const HomeHeader(),
                     SizedBox(height: tokens.spacing.xxl),
-                    const HomeNextTripCard(),
+                    HomeNextTripCard(trip: _tripStore.nextTrip),
                     SizedBox(height: tokens.spacing.xxl),
                     HomeQuickActions(actions: _quickActions),
                     SizedBox(height: tokens.spacing.xxl),
-                    const HomeEmptyTrips(),
+                    trips.isEmpty
+                        ? const HomeEmptyTrips()
+                        : HomeTripsList(trips: trips),
                   ],
                 ),
               ),
