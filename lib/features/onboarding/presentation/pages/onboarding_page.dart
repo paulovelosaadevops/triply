@@ -74,9 +74,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 
   void _finishOnboarding() {
-    Navigator.of(
-      context,
-    ).pushReplacementNamed(AppRoutes.authenticationPlaceholder);
+    Navigator.of(context).pushReplacementNamed(AppRoutes.login);
   }
 
   @override
