@@ -35,7 +35,15 @@ class AuthPageShell extends StatelessWidget {
                     Align(alignment: Alignment.centerLeft, child: leading),
                     SizedBox(height: tokens.spacing.xl),
                   ],
-                  Text(title, style: theme.textTheme.headlineMedium),
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 220),
+                    switchInCurve: Curves.easeOutCubic,
+                    child: Text(
+                      title,
+                      key: ValueKey<String>(title),
+                      style: theme.textTheme.headlineMedium,
+                    ),
+                  ),
                   SizedBox(height: tokens.spacing.sm),
                   Text(
                     description,

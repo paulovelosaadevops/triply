@@ -17,9 +17,7 @@ ThemeData buildLightTheme() {
       bodyColor: colorScheme.onSurface,
       displayColor: colorScheme.onSurface,
     ),
-    extensions: const <ThemeExtension<dynamic>>[
-      DesignTokens.base,
-    ],
+    extensions: const <ThemeExtension<dynamic>>[DesignTokens.base],
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: colorScheme.primary,
@@ -87,6 +85,47 @@ ThemeData buildLightTheme() {
       color: colorScheme.outlineVariant,
       space: AppSpacing.xl,
       thickness: 1,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: colorScheme.primary,
+      foregroundColor: colorScheme.onPrimary,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+      ),
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: colorScheme.surface,
+      indicatorColor: colorScheme.primaryContainer,
+      labelTextStyle: WidgetStatePropertyAll(
+        AppTypography.textTheme.labelMedium?.copyWith(
+          color: colorScheme.onSurface,
+        ),
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: colorScheme.inverseSurface,
+      contentTextStyle: AppTypography.textTheme.bodyMedium?.copyWith(
+        color: colorScheme.onInverseSurface,
+      ),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: colorScheme.surface,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+      ),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: colorScheme.surface,
+      modalBackgroundColor: colorScheme.surface,
+      showDragHandle: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+      ),
     ),
   );
 }

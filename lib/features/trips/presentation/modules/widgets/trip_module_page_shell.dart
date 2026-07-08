@@ -32,28 +32,44 @@ class TripModulePageShell extends StatelessWidget {
             SliverPadding(
               padding: EdgeInsets.all(tokens.spacing.xl),
               sliver: SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    IconButton(
-                      alignment: Alignment.centerLeft,
-                      onPressed: () => Navigator.of(context).maybePop(),
-                      icon: const Icon(Icons.arrow_back_rounded),
-                    ),
-                    SizedBox(height: tokens.spacing.lg),
-                    Text(title, style: theme.textTheme.headlineMedium),
-                    if (subtitle != null) ...<Widget>[
-                      SizedBox(height: tokens.spacing.xs),
-                      Text(
-                        subtitle!,
-                        style: theme.textTheme.bodyLarge?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 760),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: IconButton(
+                            onPressed: () => Navigator.of(context).maybePop(),
+                            icon: const Icon(Icons.arrow_back_rounded),
+                          ),
                         ),
-                      ),
-                    ],
-                    SizedBox(height: tokens.spacing.xxl),
-                    ...children,
-                  ],
+                        SizedBox(height: tokens.spacing.lg),
+                        Text(title, style: theme.textTheme.headlineMedium),
+                        if (subtitle != null) ...<Widget>[
+                          SizedBox(height: tokens.spacing.xs),
+                          Text(
+                            subtitle!,
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
+                        SizedBox(height: tokens.spacing.xxl),
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 220),
+                          switchInCurve: Curves.easeOutCubic,
+                          switchOutCurve: Curves.easeInCubic,
+                          child: Column(
+                            key: ValueKey<int>(children.length),
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: children,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ),
